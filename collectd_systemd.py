@@ -77,7 +77,7 @@ class SystemD(object):
                 self.init_dbus()
                 state = self.get_service_state(full_name)
 
-            value = (1.0 if state == 'running' or state == 'reload' else 0.0)
+            value = (1.0 if state == 'running' or state == 'reload' or state == 'start' else 0.0)
             self.log_verbose('Sending value: {}.{}={} (state={})'
                              .format(self.plugin_name, name, value, state))
             val = collectd.Values(
